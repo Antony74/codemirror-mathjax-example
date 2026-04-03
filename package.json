@@ -1,5 +1,5 @@
 {
-    "name": "codemirror-mathjax-example",
+    "name": "codemirror-katex-example",
     "version": "1.0.0",
     "description": "",
     "scripts": {
@@ -7,15 +7,15 @@
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/Antony74/codemirror-mathjax-example.git"
+        "url": "git+https://github.com/Antony74/codemirror-katex-example.git"
     },
     "keywords": [],
     "author": "",
     "license": "MIT",
     "bugs": {
-        "url": "https://github.com/Antony74/codemirror-mathjax-example/issues"
+        "url": "https://github.com/Antony74/codemirror-katex-example/issues"
     },
-    "homepage": "https://github.com/Antony74/codemirror-mathjax-example#readme",
+    "homepage": "https://github.com/Antony74/codemirror-katex-example#readme",
     "devDependencies": {
         "copyfiles": "^2.4.1",
         "esbuild": "^0.28.0",
