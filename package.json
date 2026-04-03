@@ -3,7 +3,7 @@
     "version": "1.0.0",
     "description": "",
     "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1"
+        "start": "rimraf dist && tsc && http-server dist"
     },
     "repository": {
         "type": "git",
@@ -16,10 +16,10 @@
         "url": "https://github.com/Antony74/codemirror-mathjax-example/issues"
     },
     "homepage": "https://github.com/Antony74/codemirror-mathjax-example#readme",
-    "dependencies": {},
     "devDependencies": {
-        "parcel": "^2.16.4",
+        "http-server": "^14.1.1",
         "prettier": "^3.8.1",
+        "rimraf": "^6.1.3",
         "typescript": "^6.0.2"
     },
     "prettier": {
