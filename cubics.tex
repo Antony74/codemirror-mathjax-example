@@ -1,20 +1,13 @@
-\documentclass[12pt]{article}
-\usepackage{enumerate}
-\usepackage[a4paper, inner=2cm, outer=2cm, top=2cm, bottom=2cm, bindingoffset=0cm]{geometry}
-
-\begin{document}
-\title{Common Cubic Curves}
-\date{}
-\maketitle
-
-These curves are constructed using just addition and multiplication.  However, because they require a *lot* of addition and multipication, they are summarised here in matrix notation.
-\\
-
-\begin{enumerate}
-
-\item Cubic Bezier curves
-
-\[
+\huge{\text{Common Cubic Curves}}\normalsize
+\\\
+\\\
+\text{These curves are constructed using just addition and multiplication.}\\\
+\text{However, because they require a *lot* of addition and multipication, they are summarised here in matrix notation.}
+\\\
+\\\
+\large\text{Cubic Bezier curves}\normalsize
+\\\
+\\\
 	P(t) =
 	\left(
 		\begin{array}{cccc}
@@ -37,16 +30,24 @@ These curves are constructed using just addition and multiplication.  However, b
 			p_2
 		\end{array}
 	\right)
-\]
-\\
+\\\
+\\\
+\text{This defines a curve from $p_1$ (at t = 0) to $p_2$ (at t = 1), using control points $p_{c1}$ and $p_{c2}$.}
+\\\
+\text{The other curves are splines - which means you can join a series of points with a series of curves,}
+\\\
+\text{and the whole thing will be nice and smooth.}
+\\\
+\\\
+\text{The curve $P_i(t)$ runs from $p_i$ (at t=0) to $p_{i+1}$ (at t = 1).  $p_{i-1}$ is where the previous curve starts and $p_{i+2}$ is where the next curve ends.}
+\\\
+\text{Beziers can easily be splined by offsetting $p_{c1}$ from $p_1$ by the same amount and in the opposite direction from which the previous curve offset $p_{c2}$.}
+\\\
+\\\
+\large\text{Uniform cubic B-splines}\normalsize
+\\\
+\\\
 
-This defines a curve from $p_1$ (at t = 0) to $p_2$ (at t = 1), using control points $p_{c1}$ and $p_{c2}$.
-The other curves are splines - which means you can join a series of points with a series of curves, and the whole thing
-will be nice and smooth.  The curve $P_i(t)$ runs from $p_i$ (at t=0) to $p_{i+1}$ (at t = 1).  $p_{i-1}$ is where the previous curve starts and $p_{i+2}$ is where the next curve ends.  Beziers can easily be splined by offsetting $p_{c1}$ from $p_1$ by the same amount and in the opposite direction from which the previous curve offset $p_{c2}$.
-
-\item Uniform cubic B-splines
-
-\[
 	P_i(t) = 
 	\left(
 		\begin{array}{cccc}
@@ -70,11 +71,13 @@ will be nice and smooth.  The curve $P_i(t)$ runs from $p_i$ (at t=0) to $p_{i+1
 			p_{i+2} \\
 		\end{array}
 	\right)
-\]
 
-\item Catmull Rom splines
+\\\
+\\\
+\large\text{Catmull Rom splines}\normalsize
+\\\
+\\\
 
-\[
 	P_i(t) = 
 	\left(
 		\begin{array}{cccc}
@@ -97,24 +100,23 @@ will be nice and smooth.  The curve $P_i(t)$ runs from $p_i$ (at t=0) to $p_{i+1
 			p_{i+2} \\
 		\end{array}
 	\right)
-\]
-
-0.5 is said to be a good value for the curve-tightness $\tau$ to start with when playing with Catmull Rom splines.
-
-\end{enumerate}
-
-\newpage
-\section*{Calculating Beziers from known points on curve}
-
-Here's the formula for a cubic Bezier curve
-
-\[
+\\\
+\\\
+\text{0.5 is said to be a good value for the curve-tightness $\tau$ to start with when playing with Catmull Rom splines.}
+\\\
+\\\
+\large\text{Calculating Beziers from known points on curve}\normalsize
+\\\
+\\\
+\text{Here's the formula for a cubic Bezier curve}
+\\\
+\\\
 v(t) = v_1(1-t)^3 + 3v_{c1}(1-t)^2t + 3v_{c2}(1-t)t^2 + v_2t^3
-\]
-
-The curve starts at $v_1$ and ends at $v_2$.  Given two additional known points on the curve $v(t_a)$ and $v(t_b)$, we can write this
-
-\[
+\\\
+\\\
+\text{The curve starts at $v_1$ and ends at $v_2$.  Given two additional known points on the curve $v(t_a)$ and $v(t_b)$, we can write this}
+\\\
+\\\
 	\left(
 		\begin{array}{cc}
 			v_{c1} & v_{c2}
@@ -133,17 +135,15 @@ The curve starts at $v_1$ and ends at $v_2$.  Given two additional known points 
 			v(t_b) - v_1(1-t_b)^3 - v_2t_b^3
 		\end{array}
 	\right)
-\]
-
-Which means we can compute our Bezier's control points $v_{c1}$ and $v_{c2}$ by performing Guassian elimination
-
-\[
+\\\
+\\\
+\text{Which means we can compute our Bezier's control points $v_{c1}$ and $v_{c2}$ by performing Guassian elimination}
+\\\
+\\\
 	\left(
 		\begin{array}{cc|c}
 			3(1-t_a)^2t_a & 3(1-t_a)t_a^2 & v(t_a) - v_1(1-t_a)^3 - v_2t_a^3 \\
 			3(1-t_b)^2t_b & 3(1-t_b)t_b^2 & v(t_b) - v_1(1-t_b)^3 - v_2t_b^3
 		\end{array}
 	\right)
-\]
 
-\end{document}
